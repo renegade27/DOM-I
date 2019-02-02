@@ -37,6 +37,60 @@ const siteContent = {
   },
 };
 
+function setupNav(object) {
+  let navanchors = document.querySelector('nav').querySelectorAll('a');
+  for(var i = 1; i < 6; i++) {
+    navanchors[i].textContent = object[`nav-item-${i}`];
+    navanchors[i].style.color = 'green';
+  }
+}
+
+function setupCta(object) {
+  let cta = document.querySelector('.cta-text');
+  cta.querySelector('h1').textContent = object['h1'];
+  cta.querySelector('button').textContent = object['button'];
+  document.getElementById('cta-img').setAttribute('src', object['img-src']);
+}
+
+function setupMainContent(object) {
+  let main = document.querySelector('.main-content');
+  let topcontent = main.querySelector('.top-content');
+  let botcontent = main.querySelector('.bottom-content');
+  // Setting up our top content
+  topcontent.querySelectorAll('.text-content')[0].querySelector('h4').textContent = object['features-h4'];
+  topcontent.querySelectorAll('.text-content')[0].querySelector('p').textContent = object['features-content'];
+  topcontent.querySelectorAll('.text-content')[1].querySelector('h4').textContent = object['about-h4'];
+  topcontent.querySelectorAll('.text-content')[1].querySelector('p').textContent = object['about-content'];
+  // Setting up our img
+  document.getElementById('middle-img').setAttribute('src', object['middle-img-src']);
+  // Setting up our bottom content
+  botcontent.querySelectorAll('.text-content')[0].querySelector('h4').textContent = object['services-h4'];
+  botcontent.querySelectorAll('.text-content')[0].querySelector('p').textContent = object['services-content'];
+  botcontent.querySelectorAll('.text-content')[1].querySelector('h4').textContent = object['product-h4'];
+  botcontent.querySelectorAll('.text-content')[1].querySelector('p').textContent = object['product-content'];
+  botcontent.querySelectorAll('.text-content')[2].querySelector('h4').textContent = object['vision-h4'];
+  botcontent.querySelectorAll('.text-content')[2].querySelector('p').textContent = object['vision-content'];
+}
+
+function setupContact(object) {
+  let contact = document.querySelector('.contact')
+  contact.querySelector('h4').textContent = object['contact-h4'];
+  contact.querySelectorAll('p')[0].textContent = object['address'];
+  contact.querySelectorAll('p')[1].textContent = object['phone'];
+  contact.querySelectorAll('p')[2].textContent = object['address'];
+}
+
+function setupFooter(object) {
+  document.querySelector('footer').innerHTML = object['copyright'];
+}
+
+console.log(siteContent.nav[`nav-item-1`]);
+
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+setupNav(siteContent.nav);
+setupCta(siteContent.cta);
+setupMainContent(siteContent['main-content']);
+setupContact(siteContent.contact);
+setupFooter(siteContent.footer);
